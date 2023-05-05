@@ -20,12 +20,33 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
+    bodyMedium = TextStyle(
+        fontFamily = CeraPro,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
     titleLarge = TextStyle(
         fontFamily = CeraPro,
         fontWeight = FontWeight.Bold,
+        fontSize = 30.sp,
+        lineHeight = 38.sp,
+        letterSpacing = 2.sp,
+    ),
+    titleMedium = TextStyle(
+        fontFamily = CeraPro,
+        fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        lineHeight = 24.sp,
+        letterSpacing = 1.sp,
+    ),
+    titleSmall = TextStyle(
+        fontFamily = CeraPro,
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp,
+        lineHeight = 22.sp,
+        letterSpacing = 1.sp,
     ),
     labelSmall = TextStyle(
         fontFamily = CeraPro,
