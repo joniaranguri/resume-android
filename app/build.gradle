@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.joniaranguri.resumeapp"
-        minSdk 21
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -84,6 +84,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf-ktx'
     implementation 'com.google.firebase:firebase-config-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.3.0")
+    implementation("io.coil-kt:coil-svg:2.3.0")
+
+    // TextFlow
+    implementation "io.github.oleksandrbalan:textflow:1.1.0"
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
