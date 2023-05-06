@@ -78,7 +78,7 @@ sealed class BottomBarScreen(
     )
 
     object Education : BottomBarScreen(
-        route = ScreenRoute.Education.route, title = "Education", icon = Icons.TwoTone.Edit
+        route = ScreenRoute.Projects.route, title = "Projects", icon = Icons.TwoTone.Edit
     )
 
     object Contact : BottomBarScreen(

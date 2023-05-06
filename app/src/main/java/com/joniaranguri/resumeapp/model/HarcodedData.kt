@@ -66,5 +66,38 @@ val profile = Profile(
         "I expect it can show a little bit about why I can be a great fit for the Blinkist Team",
         "I expect it can show a little bit about why I can be a great fit for the Blinkist Team",
     )
+)
 
+val worksList = listOf(
+    Work(
+        "Retargetly",
+        "Ssr Software Engineer",
+        "June 2022 - Present",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    ), Work(
+        "MercadoLibre",
+        "Ssr Software Engineer",
+        "Aug 2021 - May 2022",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    ), Work(
+        "MercadoLibre",
+        "Software Engineer Analyst",
+        "Jan 2020 - Jul 2021",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    ), Work(
+        "MercadoLibre",
+        "Software Engineer Assistant",
+        "Jan 2019 - Ene 2020",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    ), Work(
+        "SysOne",
+        "Fullstack Web Developer",
+        "Jan 2019 - Jun 2019",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    ), Work(
+        "Appstract",
+        "Junior Android Developer",
+        "Dec 2017 - Aug 2018",
+        "https://www.svgrepo.com/show/468088/beta-circle.svg"
+    )
 )
