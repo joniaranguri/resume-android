@@ -1,35 +1,35 @@
 package com.joniaranguri.resumeapp
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme.typography
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.joniaranguri.resumeapp.common.NavigationBottomBar
+import com.joniaranguri.resumeapp.graphs.ScreenRoute
+import com.joniaranguri.resumeapp.graphs.resumeNavGraph
 import com.joniaranguri.resumeapp.ui.theme.ResumeAppTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun ResumeApp() {
-  ResumeAppTheme {
-    Surface(modifier = Modifier.fillMaxSize()) {
-     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceEvenly) {
-       Text(text = "Welcome to JoniAranguri Resume",
-         textAlign = TextAlign.Center,
-         modifier = Modifier
-           .fillMaxWidth()
-           .padding(all = 32.dp),
-         style = typography.titleLarge,
-       )
-       Button(onClick = { /*TODO*/ },
-       modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-         Text(text = "Start!")
-       }
-     }
+fun ResumeApp(navController: NavHostController = rememberNavController()) {
+    ResumeAppTheme {
+        Scaffold(bottomBar = { NavigationBottomBar(navController = navController) }) { innerPadding ->
+            Box(modifier = Modifier.padding(innerPadding)) {
+                NavHost(
+                    navController = navController,
+                    route = ScreenRoute.HomeRoot.route,
+                    startDestination = ScreenRoute.About.route
+                ) {
+                    resumeNavGraph()
+                }
+            }
+        }
     }
-  }
 }
