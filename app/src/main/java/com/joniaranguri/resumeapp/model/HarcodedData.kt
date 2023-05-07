@@ -101,3 +101,13 @@ val worksList = listOf(
         "https://www.svgrepo.com/show/468088/beta-circle.svg"
     )
 )
+
+val educationList = listOf(
+    Education(
+        "Universidad Nacional de La Matanza \uD83C\uDDE6\uD83C\uDDF7",
+        "https://www.unlam.edu.ar/",
+        "Informatics Engineering",
+        "Apr 2016 - Present",
+        "https://iconape.com/wp-content/files/ka/193872/svg/193872.svg"
+    )
+)

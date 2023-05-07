@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.joniaranguri.resumeapp.screens.experience.education.EducationSection
 import com.joniaranguri.resumeapp.screens.experience.work.WorkSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
@@ -42,6 +43,7 @@ fun ExperienceScreen(openScreen: (String) -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     WorkSection(openScreen = openScreen)
+                    EducationSection()
                 }
             }
         }
