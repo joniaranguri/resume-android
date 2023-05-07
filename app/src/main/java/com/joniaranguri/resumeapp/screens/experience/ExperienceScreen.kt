@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.screens.experience.education.EducationSection
+import com.joniaranguri.resumeapp.screens.experience.languages.LanguagesSection
 import com.joniaranguri.resumeapp.screens.experience.work.WorkSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
@@ -45,6 +46,9 @@ fun ExperienceScreen(openScreen: (String) -> Unit) {
                     WorkSection(openScreen = openScreen)
                     EducationSection()
                 }
+            }
+            item {
+                LanguagesSection()
             }
         }
     }

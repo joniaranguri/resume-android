@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.model.Education
-
 
 @Composable
 fun EducationItem(education: Education) {
@@ -41,7 +41,7 @@ fun EducationItem(education: Education) {
         )
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .defaultPadding()
                 .fillMaxWidth()
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.Center

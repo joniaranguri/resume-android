@@ -1,6 +1,5 @@
 package com.joniaranguri.resumeapp.common
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -17,7 +16,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.joniaranguri.resumeapp.R
-import com.joniaranguri.resumeapp.graphs.NavArgument
+import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.graphs.ScreenRoute
 import com.joniaranguri.resumeapp.model.Work
 import com.joniaranguri.resumeapp.ui.theme.*
@@ -39,7 +38,7 @@ fun WorkCard(work: Work, openScreen: (String) -> Unit) {
         ) {
             Column(
                 modifier = Modifier
-                    .padding(16.dp)
+                    .defaultPadding()
                     .fillMaxWidth(.65f)
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center

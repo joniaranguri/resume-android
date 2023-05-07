@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.EducationItem
 import com.joniaranguri.resumeapp.model.educationList
 
-
 @Composable
 fun EducationSection() {
     Column(
