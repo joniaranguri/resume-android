@@ -66,5 +66,74 @@ val profile = Profile(
         "I expect it can show a little bit about why I can be a great fit for the Blinkist Team",
         "I expect it can show a little bit about why I can be a great fit for the Blinkist Team",
     )
+)
 
+val worksList = listOf(
+    Work(
+        "Retargetly",
+        "Ssr Software Engineer",
+        "June 2022 - Present",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/rely-bg.svg?alt=media&token=ea5e852d-d74e-4f4a-8726-8313989a848a"
+    ), Work(
+        "MercadoLibre",
+        "Ssr Software Engineer",
+        "Aug 2021 - May 2022",
+        "https://cdn.worldvectorlogo.com/logos/mercadolibre.svg"
+    ), Work(
+        "MercadoLibre",
+        "Software Engineer Analyst",
+        "Jan 2020 - Jul 2021",
+        "https://cdn.worldvectorlogo.com/logos/mercadolibre.svg"
+    ), Work(
+        "MercadoLibre",
+        "Software Engineer Assistant",
+        "Jun 2019 - Jan 2020",
+        "https://cdn.worldvectorlogo.com/logos/mercadolibre.svg"
+    ), Work(
+        "SysOne",
+        "Fullstack Web Developer",
+        "Jan 2019 - Jun 2019",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/sysone-logo.svg?alt=media&token=867b6d38-1dad-4d0f-9357-89b374c909fa"
+    ), Work(
+        "Appstract",
+        "Junior Android Developer",
+        "Dec 2017 - Aug 2018",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/appstract-logo.svg?alt=media&token=e863fec1-3b42-42df-b878-44c4dc8ef6ad"
+    )
+)
+
+val educationList = listOf(
+    Education(
+        "Universidad Nacional de La Matanza \uD83C\uDDE6\uD83C\uDDF7",
+        "https://www.unlam.edu.ar/",
+        "Informatics Engineering",
+        "Apr 2016 - Present",
+        "https://iconape.com/wp-content/files/ka/193872/svg/193872.svg"
+    )
+)
+
+val languagesList = listOf(
+    Language(
+        "English",
+        "Advanced",
+        "https://www.svgrepo.com/show/405645/flag-for-flag-united-states.svg",
+        "greenLight"
+    ), Language(
+        "Spanish",
+        "Native",
+        "https://www.svgrepo.com/show/405610/flag-for-flag-spain.svg",
+        "greenLight"
+    ),
+    Language(
+        "French",
+        "Beginner",
+        "https://www.svgrepo.com/show/405485/flag-for-flag-france.svg",
+        "greenLight"
+    ),
+    Language(
+        "German",
+        "Starting",
+        "https://www.svgrepo.com/show/405490/flag-for-flag-germany.svg",
+        "greenLight"
+    )
 )

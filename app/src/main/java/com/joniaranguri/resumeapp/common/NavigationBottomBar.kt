@@ -25,7 +25,7 @@ fun NavigationBottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
         BottomBarScreen.Experience,
-        BottomBarScreen.Education,
+        BottomBarScreen.Projects,
         BottomBarScreen.Contact,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -77,8 +77,8 @@ sealed class BottomBarScreen(
         route = ScreenRoute.Experience.route, title = "Experience", icon = Icons.TwoTone.Star
     )
 
-    object Education : BottomBarScreen(
-        route = ScreenRoute.Education.route, title = "Education", icon = Icons.TwoTone.Edit
+    object Projects : BottomBarScreen(
+        route = ScreenRoute.Projects.route, title = "Projects", icon = Icons.TwoTone.Edit
     )
 
     object Contact : BottomBarScreen(
