@@ -7,6 +7,7 @@ import com.joniaranguri.resumeapp.ResumeAppState
 import com.joniaranguri.resumeapp.screens.about.AboutScreen
 import com.joniaranguri.resumeapp.screens.DummyContent
 import com.joniaranguri.resumeapp.screens.experience.ExperienceScreen
+import com.joniaranguri.resumeapp.screens.projects.ProjectsScreen
 import com.joniaranguri.resumeapp.screens.work_detail.WorkDetailScreen
 
 fun NavGraphBuilder.resumeNavGraph(appState: ResumeAppState) {
@@ -17,7 +18,7 @@ fun NavGraphBuilder.resumeNavGraph(appState: ResumeAppState) {
         ExperienceScreen(openScreen = { route -> appState.navigate(route) })
     }
     composable(route = ScreenRoute.Projects.route) {
-        DummyContent(name = ScreenRoute.Projects.route, onClick = { })
+        ProjectsScreen()
     }
     composable(route = ScreenRoute.Contact.route) {
         DummyContent(name = ScreenRoute.Contact.route, onClick = { })

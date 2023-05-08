@@ -30,7 +30,7 @@ fun WorkCard(work: Work, openScreen: (String) -> Unit) {
             .fillMaxWidth()
             .clickable { openScreen("${ScreenRoute.WorkDetail.route}/${work.companyName}") }, //TODO: Use real id
         colors = CardDefaults.cardColors(
-            containerColor = md_theme_dark_onSecondary,
+            containerColor = MaterialTheme.colorScheme.onTertiary,
         ),
     ) {
         Row(

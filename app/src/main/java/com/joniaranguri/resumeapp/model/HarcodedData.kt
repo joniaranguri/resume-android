@@ -137,3 +137,54 @@ val languagesList = listOf(
         "greenLight"
     )
 )
+
+val projectsList = listOf(
+    Project(
+        "Pow(2,8)++;",
+        "ICPC Competitive Programming Team",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Working",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/icpc-logo.svg?alt=media&token=50021be7-0bb1-4b05-bf9b-e545f5c00e06",
+        ""
+    ),
+    Project(
+        "ThinkingCoder",
+        "Youtube Channel",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Starting",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/thinking-coder-bg.svg?alt=media&token=65c87db0-a610-460a-8dcd-39296c36c5a2",
+        "https://www.youtube.com/@thinkingcoder"
+    ),
+    Project(
+        "Elecciones Argentinas",
+        "Mobile App + Blockchain network",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Starting",
+        "https://www.svgrepo.com/show/405411/flag-for-flag-argentina.svg",
+        ""
+    ),
+    Project(
+        "NearYou",
+        "Freelance Flutter App",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Done",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/nearyou.svg?alt=media&token=78c9ebc0-2351-4144-9d61-3b28dc8547f3",
+        "https://github.com/joniaranguri/near_you"
+    ),
+    Project(
+        "OnFuture",
+        "Web page design & implementation",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Done",
+        "https://onfuture-39e9d.web.app/assets/images/logo.png",
+        "https://onfuture-39e9d.web.app/"
+    ),
+    Project(
+        "JoniAranguri's Blog",
+        "Web page design & Implementation",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Working",
+        "https://firebasestorage.googleapis.com/v0/b/joniaranguri-resume.appspot.com/o/joniaranguri-logo.svg?alt=media&token=f7cd04ed-9b99-4afc-b624-fac8f563a890",
+        "https://joniaranguri.com/"
+    )
+)
