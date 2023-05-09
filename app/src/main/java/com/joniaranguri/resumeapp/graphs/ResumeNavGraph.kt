@@ -5,7 +5,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.joniaranguri.resumeapp.ResumeAppState
 import com.joniaranguri.resumeapp.screens.about.AboutScreen
-import com.joniaranguri.resumeapp.screens.DummyContent
+import com.joniaranguri.resumeapp.screens.contact.ContactScreen
 import com.joniaranguri.resumeapp.screens.experience.ExperienceScreen
 import com.joniaranguri.resumeapp.screens.projects.ProjectsScreen
 import com.joniaranguri.resumeapp.screens.work_detail.WorkDetailScreen
@@ -21,7 +21,7 @@ fun NavGraphBuilder.resumeNavGraph(appState: ResumeAppState) {
         ProjectsScreen()
     }
     composable(route = ScreenRoute.Contact.route) {
-        DummyContent(name = ScreenRoute.Contact.route, onClick = { })
+        ContactScreen()
     }
     composable(
         route = "${ScreenRoute.WorkDetail.route}/{${NavArgument.WorkDetailArgument.id}}",

@@ -80,6 +80,7 @@ val waterBlueLight = Color(0xFFd7faf7)
 val blueLight = Color(0xFFc1d9f7)
 val yellowLight = Color(0xFFFCF4AF)
 val orangeLight = Color(0xFFF5C47B)
+val contactColor = Color(0xFF03314B)
 fun getColor(colorString: String): Color {
     return when (colorString) {
         "violetCard" -> violetCard
