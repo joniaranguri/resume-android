@@ -40,6 +40,8 @@ fun ContactScreen() {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
+                .background(contactColor)
+                .padding(top = 40.dp),
         ) {
             item {
                 Column(
@@ -84,10 +86,22 @@ fun ContactScreen() {
                 }
             }
             item {
-                MessageSection(context)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    MessageSection(context)
+                }
             }
             item {
-                SocialList(contactSection.data.socialList)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    SocialList(contactSection.data.socialList)
+                }
             }
         }
     }
