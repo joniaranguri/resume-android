@@ -6,18 +6,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.WorkCard
-import com.joniaranguri.resumeapp.model.valuesList
-import com.joniaranguri.resumeapp.model.worksList
+import com.joniaranguri.resumeapp.model.workSection
 
 
 @Composable
 fun WorkSection(openScreen: (String) -> Unit) {
+
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            workSection.description
         )
-        worksList.forEach { WorkCard(it, openScreen) }
+        workSection.sectionList.forEach { WorkCard(it, openScreen) }
     }
 }

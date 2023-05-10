@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.ImageCard
-import com.joniaranguri.resumeapp.model.profile
+import com.joniaranguri.resumeapp.model.profileSection
 
 @Composable
 fun ProfileSection() {
@@ -17,11 +17,9 @@ fun ProfileSection() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ImageCard(
-            profile.imageURL,
-            profile.imageDescription
+            profileSection.data.imageURL,
+            "Jonathan Aranguri's photo"
         )
-        profile.paragraphs.forEach {
-            Text(it)
-        }
+        Text(profileSection.data.presentation)
     }
 }

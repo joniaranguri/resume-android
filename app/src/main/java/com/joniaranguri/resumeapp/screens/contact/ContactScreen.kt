@@ -25,7 +25,7 @@ import coil.request.ImageRequest
 import com.joniaranguri.resumeapp.R
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.model.Social
-import com.joniaranguri.resumeapp.model.contact
+import com.joniaranguri.resumeapp.model.contactSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 import com.joniaranguri.resumeapp.ui.theme.contactColor
 import com.joniaranguri.resumeapp.ui.theme.md_theme_dark_background
@@ -73,7 +73,7 @@ fun ContactScreen() {
                         ),
                 ) {
                     Text(
-                        text = contact.description,
+                        text = contactSection.description,
                         modifier = Modifier.padding(
                             start = 16.dp,
                             end = 16.dp,
@@ -87,7 +87,7 @@ fun ContactScreen() {
                 MessageSection(context)
             }
             item {
-                SocialList(contact.socialList)
+                SocialList(contactSection.data.socialList)
             }
         }
     }
@@ -125,7 +125,7 @@ fun SocialList(socialList: List<Social>) {
 
 @Composable
 fun MessageSection(context: Context) {
-    var text by remember { mutableStateOf(TextFieldValue(contact.message)) }
+    var text by remember { mutableStateOf(TextFieldValue(contactSection.data.message)) }
     Column(modifier = Modifier.defaultPadding()) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -144,7 +144,7 @@ fun MessageSection(context: Context) {
             onClick = {
                 sendWhatsappMessage(
                     context,
-                    contact.phoneNumber,
+                    contactSection.data.phoneNumber,
                     text.text
                 )
             }) {

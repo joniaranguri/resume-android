@@ -7,7 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.EducationItem
-import com.joniaranguri.resumeapp.model.educationList
+import com.joniaranguri.resumeapp.model.educationSection
 
 @Composable
 fun EducationSection() {
@@ -18,9 +18,7 @@ fun EducationSection() {
             text = "Education",
             style = MaterialTheme.typography.titleLarge,
         )
-        Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        )
-        educationList.forEach { EducationItem(it) }
+        Text(educationSection.description)
+        educationSection.sectionList.forEach { EducationItem(it) }
     }
 }
