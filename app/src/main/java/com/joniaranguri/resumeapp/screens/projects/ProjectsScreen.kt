@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.CardFace
 import com.joniaranguri.resumeapp.common.ProjectFlipCard
 import com.joniaranguri.resumeapp.common.ext.paddingEnd
-import com.joniaranguri.resumeapp.model.projectsList
+import com.joniaranguri.resumeapp.model.projectsSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
 
@@ -38,7 +38,6 @@ fun ProjectsScreen() {
                         color = accentColor
                     )
                 }
-
             }
             item {
                 Column(
@@ -47,15 +46,13 @@ fun ProjectsScreen() {
                         .paddingEnd(),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                    )
-                    projectsList.forEach { project ->
+                    Text(projectsSection.description)
+                    projectsSection.sectionList.forEach {
                         var cardFace by remember {
                             mutableStateOf(CardFace.Front)
                         }
                         ProjectFlipCard(
-                            project = project,
+                            project = it,
                             color = MaterialTheme.colorScheme.onSecondary,
                             cardFace = cardFace,
                             onClick = { cardFace = cardFace.next },
@@ -65,7 +62,6 @@ fun ProjectsScreen() {
                         )
                     }
                 }
-
             }
         }
     }

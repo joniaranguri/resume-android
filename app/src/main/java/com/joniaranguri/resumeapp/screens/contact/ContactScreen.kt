@@ -23,9 +23,10 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.joniaranguri.resumeapp.R
+import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.model.Social
-import com.joniaranguri.resumeapp.model.contact
+import com.joniaranguri.resumeapp.model.contactSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 import com.joniaranguri.resumeapp.ui.theme.contactColor
 import com.joniaranguri.resumeapp.ui.theme.md_theme_dark_background
@@ -40,6 +41,8 @@ fun ContactScreen() {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
+                .background(contactColor)
+                .padding(top = 40.dp),
         ) {
             item {
                 Column(
@@ -50,7 +53,7 @@ fun ContactScreen() {
                     Text(
                         text = "Contact",
                         style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(top = 40.dp, start = 16.dp, end = 16.dp),
+                        modifier = Modifier.padding(horizontal = 16.dp),
                     )
                     Text(
                         text = "me :)",
@@ -72,8 +75,8 @@ fun ContactScreen() {
                             contentScale = ContentScale.FillBounds
                         ),
                 ) {
-                    Text(
-                        text = contact.description,
+                    HtmlCustomText(
+                        text = contactSection.description,
                         modifier = Modifier.padding(
                             start = 16.dp,
                             end = 16.dp,
@@ -84,10 +87,22 @@ fun ContactScreen() {
                 }
             }
             item {
-                MessageSection(context)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    MessageSection(context)
+                }
             }
             item {
-                SocialList(contact.socialList)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    SocialList(contactSection.data.socialList)
+                }
             }
         }
     }
@@ -125,7 +140,7 @@ fun SocialList(socialList: List<Social>) {
 
 @Composable
 fun MessageSection(context: Context) {
-    var text by remember { mutableStateOf(TextFieldValue(contact.message)) }
+    var text by remember { mutableStateOf(TextFieldValue(contactSection.data.message)) }
     Column(modifier = Modifier.defaultPadding()) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
@@ -144,7 +159,7 @@ fun MessageSection(context: Context) {
             onClick = {
                 sendWhatsappMessage(
                     context,
-                    contact.phoneNumber,
+                    contactSection.data.phoneNumber,
                     text.text
                 )
             }) {

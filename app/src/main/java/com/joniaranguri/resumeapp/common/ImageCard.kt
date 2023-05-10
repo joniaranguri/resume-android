@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ImageCard(imageUrl:String, contentDescription: String) {
