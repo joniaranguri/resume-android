@@ -1,8 +1,8 @@
 package com.joniaranguri.resumeapp.screens.about.hobbies
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,15 +21,19 @@ fun HobbiesSection() {
             style = MaterialTheme.typography.titleLarge,
         )
         LazyRow {
-            itemsIndexed(courseList) { _, hobby ->
-                HorizontalFeatureItem(
-                    Modifier.fillParentMaxWidth(.6f),
-                    Modifier,
-                    hobby.name,
-                    hobby.description,
-                    hobby.imageURL,
-                    hobby.color
-                )
+            item {
+                Row {
+                    courseList.forEach { hobby ->
+                        HorizontalFeatureItem(
+                            Modifier.fillParentMaxWidth(.6f),
+                            Modifier,
+                            hobby.name,
+                            hobby.description,
+                            hobby.imageURL,
+                            hobby.color
+                        )
+                    }
+                }
             }
         }
     }

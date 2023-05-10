@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
@@ -38,12 +37,6 @@ fun HorizontalFeatureItem(
                 .paint(
                     painter = rememberAsyncImagePainter(
                         R.drawable.half_round_shape,
-                        ImageLoader
-                            .Builder(LocalContext.current)
-                            .components {
-                                add(SvgDecoder.Factory())
-                            }
-                            .build(),
                         contentScale = ContentScale.FillWidth
                     ),
                     colorFilter = ColorFilter.tint(color = getColor(color))
