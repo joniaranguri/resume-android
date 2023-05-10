@@ -23,6 +23,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.joniaranguri.resumeapp.R
+import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.model.Social
 import com.joniaranguri.resumeapp.model.contactSection
@@ -52,7 +53,7 @@ fun ContactScreen() {
                     Text(
                         text = "Contact",
                         style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(top = 40.dp, start = 16.dp, end = 16.dp),
+                        modifier = Modifier.padding(horizontal = 16.dp),
                     )
                     Text(
                         text = "me :)",
@@ -74,7 +75,7 @@ fun ContactScreen() {
                             contentScale = ContentScale.FillBounds
                         ),
                 ) {
-                    Text(
+                    HtmlCustomText(
                         text = contactSection.description,
                         modifier = Modifier.padding(
                             start = 16.dp,

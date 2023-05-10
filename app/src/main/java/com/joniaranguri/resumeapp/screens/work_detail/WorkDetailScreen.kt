@@ -13,12 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ImageCard
 import com.joniaranguri.resumeapp.model.Skill
 import com.joniaranguri.resumeapp.model.workDetail
-import com.joniaranguri.resumeapp.ui.theme.CeraPro
 import com.joniaranguri.resumeapp.ui.theme.accentColor
-import de.charlex.compose.HtmlText
 
 @Composable
 fun WorkDetailScreen(workId: String) {
@@ -55,13 +54,7 @@ fun WorkDetailScreen(workId: String) {
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) {
-                    HtmlText(
-                        text = workDetail.description,
-                        fontSize = 16.sp,
-                        lineHeight = 24.sp,
-                        letterSpacing = 1.sp,
-                        fontFamily = CeraPro, color = MaterialTheme.colorScheme.onBackground
-                    )
+                    HtmlCustomText(workDetail.description)
                     ImageCard(
                         workDetail.imageURL,
                         "Image related to the work at ${workDetail.companyName}"
