@@ -85,7 +85,6 @@ fun ProjectFlipCard(
 @Composable
 fun Back(project: Project) {
     val uriHandler = LocalUriHandler.current
-    val context = LocalContext.current
     Column(
         modifier = Modifier
             .defaultPadding()
@@ -112,7 +111,7 @@ fun Front(project: Project) {
                 .padding(start = 16.dp, bottom = 16.dp, top = 16.dp)
                 .fillMaxHeight()
                 .fillMaxWidth(.6f),
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Top
 
         ) {
             Surface(
