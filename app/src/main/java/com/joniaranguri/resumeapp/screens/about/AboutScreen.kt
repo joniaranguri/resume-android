@@ -5,15 +5,25 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.joniaranguri.resumeapp.screens.about.hobbies.HobbiesSection
 import com.joniaranguri.resumeapp.screens.about.profile.ProfileSection
 import com.joniaranguri.resumeapp.screens.about.values.ValuesSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
 @Composable
-fun AboutScreen() {
+fun AboutScreen(
+    viewModel: AboutViewModel = hiltViewModel()
+) {
+    val profileSection by viewModel.profileSection
+    val valuesSection by viewModel.valuesSection
+    val hobbiesSection by viewModel.hobbiesSection
+    LaunchedEffect(Unit) { viewModel.initialize() }
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -43,13 +53,13 @@ fun AboutScreen() {
                     modifier = Modifier.padding(horizontal = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    ProfileSection()
-                    ValuesSection()
+                    profileSection?.let { ProfileSection(it) } //todo: Review nullability
+                    valuesSection?.let { ValuesSection(it) }
                 }
 
             }
             item {
-                HobbiesSection()
+                hobbiesSection.hobbiesList?.let { HobbiesSection(it) }
             }
         }
     }

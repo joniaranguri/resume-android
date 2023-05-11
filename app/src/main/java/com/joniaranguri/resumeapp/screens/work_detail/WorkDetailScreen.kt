@@ -8,20 +8,23 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ImageCard
 import com.joniaranguri.resumeapp.model.Skill
-import com.joniaranguri.resumeapp.model.workDetail
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
 @Composable
-fun WorkDetailScreen(workId: String) {
-    val workDetail = workDetail
+fun WorkDetailScreen(workId: String, viewModel: WorkDetailViewModel = hiltViewModel()) {
+    val workDetailSection by viewModel.workDetailSection
+    LaunchedEffect(Unit) { viewModel.initialize(workId) }
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -37,15 +40,16 @@ fun WorkDetailScreen(workId: String) {
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) {
                     Text(
-                        text = workDetail.title, style = MaterialTheme.typography.titleLarge,
+                        text = workDetailSection.title, style = MaterialTheme.typography.titleLarge,
                     )
                     Text(
-                        text = workDetail.companyName,
+                        text = workDetailSection.companyName,
                         style = MaterialTheme.typography.titleLarge,
                         color = accentColor
                     )
                     Text(
-                        text = workDetail.period, style = MaterialTheme.typography.titleSmall,
+                        text = workDetailSection.period,
+                        style = MaterialTheme.typography.titleSmall,
                     )
                 }
             }
@@ -54,10 +58,10 @@ fun WorkDetailScreen(workId: String) {
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.padding(horizontal = 16.dp)
                 ) {
-                    HtmlCustomText(workDetail.description)
+                    HtmlCustomText(workDetailSection.description)
                     ImageCard(
-                        workDetail.imageURL,
-                        "Image related to the work at ${workDetail.companyName}"
+                        workDetailSection.imageURL,
+                        "Image related to the work at ${workDetailSection.companyName}"
                     )
                     Text(
                         text = "Skills",
@@ -66,7 +70,7 @@ fun WorkDetailScreen(workId: String) {
                 }
             }
             item {
-                SkillsList(workDetail.skillsList)
+                SkillsList(workDetailSection.skillsList)
             }
         }
     }
