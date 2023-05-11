@@ -7,15 +7,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.joniaranguri.resumeapp.common.CardFace
 import com.joniaranguri.resumeapp.common.ProjectFlipCard
 import com.joniaranguri.resumeapp.common.ext.paddingEnd
-import com.joniaranguri.resumeapp.model.projectsSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
-
 @Composable
-fun ProjectsScreen() {
+fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
+    val projectsSection by viewModel.projectsSection
+    LaunchedEffect(Unit) { viewModel.initialize() }
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -47,7 +49,7 @@ fun ProjectsScreen() {
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     Text(projectsSection.description)
-                    projectsSection.sectionList.forEach {
+                    projectsSection.projectsList.forEach {
                         var cardFace by remember {
                             mutableStateOf(CardFace.Front)
                         }
