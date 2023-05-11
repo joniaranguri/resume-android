@@ -17,6 +17,7 @@ class ContactViewModel @Inject constructor(
     fun initialize() {
         launchCatching {
             contactSection.value = contactService.getContactSection() ?: ContactSection()
+            isLoading.value = false
         }
     }
 

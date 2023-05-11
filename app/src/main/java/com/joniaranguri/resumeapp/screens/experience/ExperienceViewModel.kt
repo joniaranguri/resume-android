@@ -20,6 +20,7 @@ class ExperienceViewModel @Inject constructor(
     fun initialize() {
         launchCatching {
             workSection.value = experienceService.getWorkSection() ?: WorkSection()
+            isLoading.value = false
         }
         launchCatching {
             educationSection.value = experienceService.getEducationSection() ?: EducationSection()

@@ -8,10 +8,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ImageCard
+import com.joniaranguri.resumeapp.common.ShimmerText
 import com.joniaranguri.resumeapp.model.ProfileSection
 
 @Composable
-fun ProfileSection(profileSection: ProfileSection) {
+fun ProfileSection(profileSection: ProfileSection, isLoading: Boolean) {
     Column(
         modifier = Modifier.padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -20,6 +21,7 @@ fun ProfileSection(profileSection: ProfileSection) {
             profileSection.imageURL,
             "Jonathan Aranguri's photo"
         )
-        HtmlCustomText(profileSection.presentation)
+        if (isLoading) ShimmerText()
+        else HtmlCustomText(profileSection.presentation)
     }
 }

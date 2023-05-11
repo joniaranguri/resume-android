@@ -16,6 +16,7 @@ class ProjectsViewModel @Inject constructor(
     fun initialize() {
         launchCatching {
             projectsSection.value = projectsService.getProjectsSection() ?: ProjectsSection()
+            isLoading.value = false
         }
     }
 }
