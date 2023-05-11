@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.HorizontalFeatureItem
 import com.joniaranguri.resumeapp.common.ext.paddingEnd
-import com.joniaranguri.resumeapp.model.languagesSection
+import com.joniaranguri.resumeapp.model.LanguagesSection
 
 @Composable
-fun LanguagesSection() {
+fun LanguagesSection(languagesSection: LanguagesSection) {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.padding(horizontal = 16.dp)
@@ -27,13 +27,13 @@ fun LanguagesSection() {
             modifier = Modifier.padding(top = 16.dp)
         )
         Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            languagesSection.description
         )
     }
     LazyRow {
         item {
             Row {
-                languagesSection.sectionList.forEach { language ->
+                languagesSection.languagesList.forEach { language ->
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.paddingEnd()

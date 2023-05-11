@@ -53,7 +53,7 @@ fun AboutScreen(
                     modifier = Modifier.padding(horizontal = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    profileSection?.let { ProfileSection(it) }
+                    profileSection?.let { ProfileSection(it) } //todo: Review nullability
                     valuesSection?.let { ValuesSection(it) }
                 }
 
