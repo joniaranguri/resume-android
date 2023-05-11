@@ -18,6 +18,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
@@ -25,15 +27,17 @@ import coil.request.ImageRequest
 import com.joniaranguri.resumeapp.R
 import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
+import com.joniaranguri.resumeapp.model.ContactSection
 import com.joniaranguri.resumeapp.model.Social
-import com.joniaranguri.resumeapp.model.contactSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 import com.joniaranguri.resumeapp.ui.theme.contactColor
 import com.joniaranguri.resumeapp.ui.theme.md_theme_dark_background
 
 @Composable
-fun ContactScreen() {
+fun ContactScreen(viewModel: ContactViewModel = hiltViewModel()) {
     val context = LocalContext.current
+    val contactSection by viewModel.contactSection
+    LaunchedEffect(Unit) { viewModel.initialize() }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -92,7 +96,12 @@ fun ContactScreen() {
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)
                 ) {
-                    MessageSection(context)
+                    MessageSection(
+                        context,
+                        contactSection,
+                        viewModel::onMessageChange,
+                        viewModel::sendMessage
+                    )
                 }
             }
             item {
@@ -101,7 +110,7 @@ fun ContactScreen() {
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background)
                 ) {
-                    SocialList(contactSection.data.socialList)
+                    SocialList(contactSection.socialList)
                 }
             }
         }
@@ -139,28 +148,32 @@ fun SocialList(socialList: List<Social>) {
 }
 
 @Composable
-fun MessageSection(context: Context) {
-    var text by remember { mutableStateOf(TextFieldValue(contactSection.data.message)) }
+fun MessageSection(
+    context: Context,
+    contactSection: ContactSection,
+    onNewValue: (String) -> Unit,
+    sendMessage: () -> Boolean
+) {
     Column(modifier = Modifier.defaultPadding()) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.onSecondary
             ),
-            value = text,
+            value = contactSection.message,
             placeholder = {
                 Text(text = "Some awesome message..")
             },
-            onValueChange = { text = it })
+            onValueChange = { onNewValue(it) })
         Button(
             modifier = Modifier
                 .fillMaxWidth()
                 .defaultPadding(),
             onClick = {
-                sendWhatsappMessage(
+                if (sendMessage()) sendWhatsappMessage(
                     context,
-                    contactSection.data.phoneNumber,
-                    text.text
+                    contactSection.phoneNumber,
+                    contactSection.message
                 )
             }) {
             Text(text = "Send message")
