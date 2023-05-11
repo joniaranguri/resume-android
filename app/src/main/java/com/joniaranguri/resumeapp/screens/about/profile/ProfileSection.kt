@@ -8,18 +8,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ImageCard
-import com.joniaranguri.resumeapp.model.profileSection
+import com.joniaranguri.resumeapp.model.ProfileSection
 
 @Composable
-fun ProfileSection() {
+fun ProfileSection(profileSection: ProfileSection) {
     Column(
         modifier = Modifier.padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         ImageCard(
-            profileSection.data.imageURL,
+            profileSection.imageURL,
             "Jonathan Aranguri's photo"
         )
-        HtmlCustomText(profileSection.data.presentation)
+        HtmlCustomText(profileSection.presentation)
     }
 }

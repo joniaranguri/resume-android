@@ -10,10 +10,10 @@ import androidx.compose.ui.Modifier
 import com.joniaranguri.resumeapp.common.HorizontalFeatureItem
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.common.ext.paddingEnd
-import com.joniaranguri.resumeapp.model.hobbiesSection
+import com.joniaranguri.resumeapp.model.Hobby
 
 @Composable
-fun HobbiesSection() {
+fun HobbiesSection(hobbiesSectionList: List<Hobby>) {
     Column(modifier = Modifier.paddingEnd()) {
         Text(
             modifier = Modifier.defaultPadding(),
@@ -23,7 +23,7 @@ fun HobbiesSection() {
         LazyRow {
             item {
                 Row {
-                    hobbiesSection.sectionList.forEach { hobby ->
+                    hobbiesSectionList.forEach { hobby ->
                         HorizontalFeatureItem(
                             Modifier.fillParentMaxWidth(.6f),
                             Modifier,

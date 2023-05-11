@@ -7,11 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.ValueCard
-import com.joniaranguri.resumeapp.model.valuesSection
+import com.joniaranguri.resumeapp.model.ValuesSection
 import com.joniaranguri.resumeapp.ui.theme.getColor
 
 @Composable
-fun ValuesSection() {
+fun ValuesSection(valuesSection: ValuesSection) {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
@@ -22,7 +22,7 @@ fun ValuesSection() {
         Text(
             valuesSection.description
         )
-        valuesSection.sectionList.forEach { value ->
+        valuesSection.valuesList.forEach { value ->
             ValueCard(
                 value.name, value.description, getColor(value.color), value.imageUrl
             )
