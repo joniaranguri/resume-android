@@ -39,7 +39,7 @@ fun WorkDetailScreen(
             modifier = Modifier
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(bottom = 32.dp) //Todo: make same in all screens
+            contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
                 SmallTopAppBar(

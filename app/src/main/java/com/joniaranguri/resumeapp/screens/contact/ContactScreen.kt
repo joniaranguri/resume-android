@@ -47,7 +47,8 @@ fun ContactScreen(viewModel: ContactViewModel = hiltViewModel()) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
+                .background(MaterialTheme.colorScheme.background),
+            contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
                 Column(
@@ -122,8 +123,7 @@ fun SocialList(socialList: List<Social>, isLoading: Boolean) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .defaultPadding()
-            .padding(bottom = 16.dp),
+            .defaultPadding(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         if (isLoading) {
