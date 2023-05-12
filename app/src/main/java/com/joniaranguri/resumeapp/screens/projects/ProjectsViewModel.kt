@@ -13,9 +13,10 @@ class ProjectsViewModel @Inject constructor(
 ) : BaseViewModel() {
     val projectsSection = mutableStateOf(ProjectsSection())
 
-    fun initialize() {
+    init {
         launchCatching {
             projectsSection.value = projectsService.getProjectsSection() ?: ProjectsSection()
+            isLoading.value = false
         }
     }
 }

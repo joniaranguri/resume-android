@@ -10,13 +10,16 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joniaranguri.resumeapp.common.CardFace
 import com.joniaranguri.resumeapp.common.ProjectFlipCard
+import com.joniaranguri.resumeapp.common.ShimmerCard
+import com.joniaranguri.resumeapp.common.ShimmerText
 import com.joniaranguri.resumeapp.common.ext.paddingEnd
+import com.joniaranguri.resumeapp.model.ProjectsSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
 @Composable
 fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
     val projectsSection by viewModel.projectsSection
-    LaunchedEffect(Unit) { viewModel.initialize() }
+    val isLoading by viewModel.isLoading
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -48,23 +51,34 @@ fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
                         .paddingEnd(),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    Text(projectsSection.description)
-                    projectsSection.projectsList.forEach {
-                        var cardFace by remember {
-                            mutableStateOf(CardFace.Front)
+                    if (isLoading) {
+                        ShimmerText()
+                        repeat(5) {
+                            ShimmerCard(150.dp)
                         }
-                        ProjectFlipCard(
-                            project = it,
-                            color = MaterialTheme.colorScheme.onSecondary,
-                            cardFace = cardFace,
-                            onClick = { cardFace = cardFace.next },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .aspectRatio(1.7f),
-                        )
-                    }
+                    } else ProjectsContent(projectsSection)
+
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ProjectsContent(projectsSection: ProjectsSection) {
+    Text(projectsSection.description)
+    projectsSection.projectsList.forEach {
+        var cardFace by remember {
+            mutableStateOf(CardFace.Front)
+        }
+        ProjectFlipCard(
+            project = it,
+            color = MaterialTheme.colorScheme.onSecondary,
+            cardFace = cardFace,
+            onClick = { cardFace = cardFace.next },
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.7f),
+        )
     }
 }

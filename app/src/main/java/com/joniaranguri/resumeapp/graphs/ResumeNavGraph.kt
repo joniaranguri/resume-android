@@ -30,6 +30,7 @@ fun NavGraphBuilder.resumeNavGraph(appState: ResumeAppState) {
         })
     ) {
         WorkDetailScreen(
+            goBack = { appState.popUp() },
             workId = it.arguments?.getString(NavArgument.WorkDetailArgument.id)
                 ?: NavArgument.WorkDetailArgument.default
         )

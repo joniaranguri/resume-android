@@ -66,6 +66,7 @@ val md_theme_dark_scrim = Color(0xFF000000)
 
 // Custom colors
 val accentColor = Color(0xFF4794F8)
+val shimmerTextColor = Color(0x97C8DEFA)
 
 val violetCard = Color(0xFF450650)
 val redCard = Color(0xFFAA011F)

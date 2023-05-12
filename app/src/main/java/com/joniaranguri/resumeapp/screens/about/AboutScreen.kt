@@ -22,7 +22,7 @@ fun AboutScreen(
     val profileSection by viewModel.profileSection
     val valuesSection by viewModel.valuesSection
     val hobbiesSection by viewModel.hobbiesSection
-    LaunchedEffect(Unit) { viewModel.initialize() }
+    val isLoading by viewModel.isLoading
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -53,13 +53,12 @@ fun AboutScreen(
                     modifier = Modifier.padding(horizontal = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    profileSection?.let { ProfileSection(it) } //todo: Review nullability
-                    valuesSection?.let { ValuesSection(it) }
+                    ProfileSection(profileSection, isLoading)
+                    ValuesSection(valuesSection, isLoading)
                 }
-
             }
             item {
-                hobbiesSection.hobbiesList?.let { HobbiesSection(it) }
+                HobbiesSection(hobbiesSection.hobbiesList, isLoading)
             }
         }
     }
