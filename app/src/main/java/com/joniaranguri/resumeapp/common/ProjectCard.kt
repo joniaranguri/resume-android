@@ -145,7 +145,9 @@ fun Front(project: Project) {
         ) {
 
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current).data(project.logo)
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(project.logo)
+                    .crossfade(500)
                     .decoderFactory(SvgDecoder.Factory()).build(),
                 contentDescription = "${project.name}'s logo",
                 contentScale = ContentScale.Inside,

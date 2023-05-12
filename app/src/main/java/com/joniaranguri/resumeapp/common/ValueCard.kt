@@ -63,7 +63,9 @@ fun ValueCard(title: String, description: String, color: Color, imageUrl: String
                     obstacleAlignment = TextFlowObstacleAlignment.TopEnd,
                     obstacleContent = {
                         AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current).data(imageUrl)
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(imageUrl)
+                                .crossfade(500)
                                 .decoderFactory(SvgDecoder.Factory()).build(),
                             contentDescription = "contentDescription",
                             contentScale = ContentScale.Inside,

@@ -25,7 +25,9 @@ fun EducationItem(education: Education) {
     val uriHandler = LocalUriHandler.current
     Row {
         AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current).data(education.institutionLogo)
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(education.institutionLogo)
+                .crossfade(500)
                 .decoderFactory(SvgDecoder.Factory()).build(),
             contentDescription = "${education.institution}'s logo",
             contentScale = ContentScale.Inside,

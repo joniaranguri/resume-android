@@ -139,7 +139,9 @@ fun SocialContent(socialList: List<Social>) {
     val uriHandler = LocalUriHandler.current
     socialList.forEach {
         AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current).data(it.logo).crossfade(500)
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(it.logo)
+                .crossfade(500)
                 .decoderFactory(SvgDecoder.Factory()).build(),
             contentDescription = "${it.name}'s logo",
             contentScale = ContentScale.Inside,
