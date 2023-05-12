@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.HorizontalFeatureItem
-import com.joniaranguri.resumeapp.common.ext.paddingEnd
 import com.joniaranguri.resumeapp.model.LanguagesSection
 
 @Composable
@@ -33,7 +32,7 @@ fun LanguagesSection(languagesSection: LanguagesSection) {
             languagesSection.description
         )
     }
-    LazyRow(Modifier.paddingEnd()) {
+    LazyRow {
         item {
             Row {
                 languagesSection.languagesList.forEach { language ->

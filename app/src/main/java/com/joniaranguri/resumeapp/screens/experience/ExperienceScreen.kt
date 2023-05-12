@@ -5,12 +5,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.joniaranguri.resumeapp.common.ext.paddingEnd
 import com.joniaranguri.resumeapp.screens.experience.education.EducationSection
 import com.joniaranguri.resumeapp.screens.experience.languages.LanguagesSection
 import com.joniaranguri.resumeapp.screens.experience.work.WorkSection
@@ -33,6 +31,7 @@ fun ExperienceScreen(
                 .fillMaxSize()
                 .padding(top = 40.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
                 Column(

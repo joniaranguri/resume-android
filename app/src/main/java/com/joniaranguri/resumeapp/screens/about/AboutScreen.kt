@@ -32,6 +32,7 @@ fun AboutScreen(
                 .fillMaxSize()
                 .padding(top = 40.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
                 Column(

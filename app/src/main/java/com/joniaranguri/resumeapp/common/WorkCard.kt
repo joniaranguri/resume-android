@@ -28,7 +28,7 @@ fun WorkCard(work: Work, openScreen: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { openScreen("${ScreenRoute.WorkDetail.route}/${work.workId}") }, //TODO: Use real id
+            .clickable { openScreen("${ScreenRoute.WorkDetail.route}/${work.workId}") },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onTertiary,
         ),

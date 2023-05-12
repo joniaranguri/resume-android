@@ -6,20 +6,18 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.joniaranguri.resumeapp.common.HorizontalFeatureItem
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
-import com.joniaranguri.resumeapp.common.ext.paddingEnd
 import com.joniaranguri.resumeapp.model.Hobby
 
 @Composable
 fun HobbiesSection(hobbiesSectionList: List<Hobby>, isLoading: Boolean) {
     val hobbyHeight: Dp = LocalConfiguration.current.screenWidthDp.dp * 55 / 100
-    Column(modifier = Modifier.paddingEnd()) {
+    Column {
         Text(
             modifier = Modifier.defaultPadding(),
             text = "My Hobbies",

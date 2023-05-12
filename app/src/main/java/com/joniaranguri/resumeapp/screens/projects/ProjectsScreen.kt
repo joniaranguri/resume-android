@@ -12,7 +12,6 @@ import com.joniaranguri.resumeapp.common.CardFace
 import com.joniaranguri.resumeapp.common.ProjectFlipCard
 import com.joniaranguri.resumeapp.common.ShimmerCard
 import com.joniaranguri.resumeapp.common.ShimmerText
-import com.joniaranguri.resumeapp.common.ext.paddingEnd
 import com.joniaranguri.resumeapp.model.ProjectsSection
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 
@@ -29,6 +28,7 @@ fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
                 .fillMaxSize()
                 .padding(top = 40.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(bottom = 32.dp)
         ) {
             item {
                 Column(
@@ -47,8 +47,7 @@ fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
             item {
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .paddingEnd(),
+                        .padding(horizontal = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     if (isLoading) {
