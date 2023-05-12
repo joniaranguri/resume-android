@@ -25,8 +25,6 @@ fun ExperienceScreen(
     val languagesSection by viewModel.languagesSection
     val isLoading by viewModel.isLoading
 
-    LaunchedEffect(Unit) { viewModel.initialize() }
-
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

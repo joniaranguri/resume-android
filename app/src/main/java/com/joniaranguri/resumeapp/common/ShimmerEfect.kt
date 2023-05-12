@@ -60,7 +60,7 @@ fun ShimmerText(modifier: Modifier = Modifier, lines: Int = 5) {
         repeat(lines) {
             Spacer(
                 modifier = Modifier
-                    .height(12.dp)
+                    .height(14.dp)
                     .clip(RoundedCornerShape(10.dp))
                     .fillMaxWidth()
                     .shimmerEffect(

@@ -12,10 +12,23 @@ class WorkDetailViewModel @Inject constructor(
     private val workDetailService: WorkDetailService
 ) : BaseViewModel() {
     val workDetailSection = mutableStateOf(WorkDetailSection())
+    private val now: Long
+        get() = System.currentTimeMillis()
+
+    private var lastEventTimeMs: Long = 0
 
     fun initialize(workId: String) {
         launchCatching {
-            workDetailSection.value = workDetailService.getWorkDetailSection(workId) ?: WorkDetailSection()
+            workDetailSection.value =
+                workDetailService.getWorkDetailSection(workId) ?: WorkDetailSection()
+            isLoading.value = false
         }
+    }
+
+    fun processEvent(event: () -> Unit) {
+        if (now - lastEventTimeMs >= 300L) {
+            event.invoke()
+        }
+        lastEventTimeMs = now
     }
 }

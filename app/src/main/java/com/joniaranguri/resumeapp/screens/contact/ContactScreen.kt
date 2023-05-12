@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,7 +39,7 @@ fun ContactScreen(viewModel: ContactViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val contactSection by viewModel.contactSection
     val isLoading by viewModel.isLoading
-    LaunchedEffect(Unit) { viewModel.initialize() }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -48,14 +47,14 @@ fun ContactScreen(viewModel: ContactViewModel = hiltViewModel()) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(contactColor)
-                .padding(top = 40.dp),
+                .background(MaterialTheme.colorScheme.background)
         ) {
             item {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(contactColor)
+                        .padding(top = 40.dp)
                 ) {
                     Text(
                         text = "Contact",
@@ -69,7 +68,6 @@ fun ContactScreen(viewModel: ContactViewModel = hiltViewModel()) {
                         modifier = Modifier.padding(horizontal = 16.dp),
                     )
                 }
-
             }
             item {
                 Box(

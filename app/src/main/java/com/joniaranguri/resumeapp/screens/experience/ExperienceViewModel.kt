@@ -17,7 +17,7 @@ class ExperienceViewModel @Inject constructor(
     val educationSection = mutableStateOf(EducationSection())
     val languagesSection = mutableStateOf(LanguagesSection())
 
-    fun initialize() {
+    init {
         launchCatching {
             workSection.value = experienceService.getWorkSection() ?: WorkSection()
             isLoading.value = false

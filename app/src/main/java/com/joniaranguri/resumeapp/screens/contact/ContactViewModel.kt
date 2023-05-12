@@ -14,7 +14,7 @@ class ContactViewModel @Inject constructor(
 ) : BaseViewModel() {
     val contactSection = mutableStateOf(ContactSection())
 
-    fun initialize() {
+    init {
         launchCatching {
             contactSection.value = contactService.getContactSection() ?: ContactSection()
             isLoading.value = false

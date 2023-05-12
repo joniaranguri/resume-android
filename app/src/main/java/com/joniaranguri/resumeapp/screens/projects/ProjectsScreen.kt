@@ -21,8 +21,6 @@ fun ProjectsScreen(viewModel: ProjectsViewModel = hiltViewModel()) {
     val projectsSection by viewModel.projectsSection
     val isLoading by viewModel.isLoading
 
-    LaunchedEffect(Unit) { viewModel.initialize() }
-
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

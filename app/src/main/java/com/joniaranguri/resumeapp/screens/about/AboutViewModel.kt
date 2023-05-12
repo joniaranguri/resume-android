@@ -16,10 +16,9 @@ class AboutViewModel @Inject constructor(
     val valuesSection = mutableStateOf(ValuesSection())
     val hobbiesSection = mutableStateOf(HobbiesSection())
 
-    fun initialize() {
+    init {
         launchCatching {
             profileSection.value = aboutService.getProfileSection() ?: ProfileSection()
-            delay(3000)
             isLoading.value = false
         }
         launchCatching {

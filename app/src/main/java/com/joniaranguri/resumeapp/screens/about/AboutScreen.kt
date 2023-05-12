@@ -24,8 +24,6 @@ fun AboutScreen(
     val hobbiesSection by viewModel.hobbiesSection
     val isLoading by viewModel.isLoading
 
-    LaunchedEffect(Unit) { viewModel.initialize() }
-
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
