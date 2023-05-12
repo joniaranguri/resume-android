@@ -71,6 +71,7 @@ fun WorkCard(work: Work, openScreen: (String) -> Unit) {
 
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(work.companyLogo)
+                        .crossfade(500)
                         .decoderFactory(SvgDecoder.Factory()).build(),
                     contentDescription = "${work.companyName}'s logo",
                     contentScale = ContentScale.Inside,
