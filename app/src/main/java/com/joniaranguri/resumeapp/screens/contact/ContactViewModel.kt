@@ -16,8 +16,11 @@ class ContactViewModel @Inject constructor(
 
     init {
         launchCatching {
-            contactSection.value = contactService.getContactSection() ?: ContactSection()
-            isLoading.value = false
+            contactService.getContactSection().also {
+                contactSection.value = it ?: ContactSection()
+                isLoading.value = false
+                if (it == null || it.socialList.isEmpty()) throw Throwable(NO_SOCIAL_CONTACT_LOADED)
+            }
         }
     }
 
@@ -32,5 +35,9 @@ class ContactViewModel @Inject constructor(
 
     fun onMessageChange(newValue: String) {
         contactSection.value = contactSection.value.copy(message = newValue)
+    }
+
+    companion object {
+        const val NO_SOCIAL_CONTACT_LOADED = "There was an error and no social contact was loaded"
     }
 }

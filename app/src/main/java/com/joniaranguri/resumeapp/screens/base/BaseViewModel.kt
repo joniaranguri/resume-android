@@ -6,6 +6,8 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 
 
 open class BaseViewModel : ViewModel() {
@@ -13,7 +15,7 @@ open class BaseViewModel : ViewModel() {
     fun launchCatching(block: suspend CoroutineScope.() -> Unit) =
         viewModelScope.launch(
             CoroutineExceptionHandler { _, throwable ->
-                // Todo: Make log of errors
+                Firebase.crashlytics.recordException(throwable)
             },
             block = block
         )
