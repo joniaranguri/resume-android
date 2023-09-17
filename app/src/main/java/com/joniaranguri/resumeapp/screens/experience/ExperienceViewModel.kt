@@ -19,15 +19,29 @@ class ExperienceViewModel @Inject constructor(
 
     init {
         launchCatching {
-            workSection.value = experienceService.getWorkSection() ?: WorkSection()
-            isLoading.value = false
+            experienceService.getWorkSection().also {
+                workSection.value = it ?: WorkSection()
+                isLoading.value = false
+                if (it == null || it.workList.isEmpty()) throw Throwable(NO_WORKS_LOADED)
+            }
         }
         launchCatching {
-            educationSection.value = experienceService.getEducationSection() ?: EducationSection()
+            experienceService.getEducationSection().also {
+                educationSection.value = it ?: EducationSection()
+                if (it == null || it.educationList.isEmpty()) throw Throwable(NO_EDUCATION_LOADED)
+            }
         }
         launchCatching {
-            languagesSection.value = experienceService.getLanguagesSection() ?: LanguagesSection()
+            experienceService.getLanguagesSection().also {
+                languagesSection.value = it ?: LanguagesSection()
+                if (it == null || it.languagesList.isEmpty()) throw Throwable(NO_LANGUAGES_LOADED)
+            }
         }
     }
 
+    companion object {
+        const val NO_WORKS_LOADED = "There was an error and no one job was loaded"
+        const val NO_LANGUAGES_LOADED = "There was an error and no one language was loaded"
+        const val NO_EDUCATION_LOADED = "There was an error and education was not loaded"
+    }
 }

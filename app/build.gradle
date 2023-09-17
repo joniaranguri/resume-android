@@ -5,6 +5,7 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.firebase-perf'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -71,8 +72,14 @@ dependencies {
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.5.0')
+
+    // Firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-perf-ktx'
+
+    // Crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.3.0")

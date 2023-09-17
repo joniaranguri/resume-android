@@ -15,8 +15,15 @@ class ProjectsViewModel @Inject constructor(
 
     init {
         launchCatching {
-            projectsSection.value = projectsService.getProjectsSection() ?: ProjectsSection()
-            isLoading.value = false
+            projectsService.getProjectsSection().also {
+                projectsSection.value = it ?: ProjectsSection()
+                isLoading.value = false
+                if (it == null || it.projectsList.isEmpty()) throw Throwable(NO_PROJECTS_LOADED)
+            }
         }
+    }
+
+    companion object {
+        const val NO_PROJECTS_LOADED = "There was an error and no one personal project was loaded"
     }
 }

@@ -14,6 +14,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +39,13 @@ fun ImageCard(imageUrl: String, contentDescription: String) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
-                    .defaultMinSize(screenWidth, screenWidth)
+                    .defaultMinSize(screenWidth, screenWidth),
+                onError = {
+                    if (imageUrl.isNotEmpty()) {
+                        Firebase.crashlytics.log("IMAGE LOAD FAILED: Cannot load $contentDescription. ImageUrl: $imageUrl")
+                        Firebase.crashlytics.recordException(it.result.throwable)
+                    }
+                }
             )
         }
     }
