@@ -60,5 +60,7 @@ class ExperienceViewModel @Inject constructor(
         const val NO_WORKS_LOADED = "There was an error and no one job was loaded"
         const val NO_LANGUAGES_LOADED = "There was an error and no one language was loaded"
         const val NO_EDUCATION_LOADED = "There was an error and education was not loaded"
+        const val ANALYTICS_EVENT_WORK_DETAIL = "WORK_DETAIL"
+
     }
 }
