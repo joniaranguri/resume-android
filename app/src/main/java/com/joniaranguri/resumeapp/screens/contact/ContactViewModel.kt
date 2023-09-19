@@ -1,6 +1,7 @@
 package com.joniaranguri.resumeapp.screens.contact
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.perf.metrics.AddTrace
 import com.joniaranguri.resumeapp.model.ContactSection
 import com.joniaranguri.resumeapp.model.Message
 import com.joniaranguri.resumeapp.model.service.ContactService
@@ -16,11 +17,16 @@ class ContactViewModel @Inject constructor(
 
     init {
         launchCatching {
-            contactService.getContactSection().also {
-                contactSection.value = it ?: ContactSection()
-                isLoading.value = false
-                if (it == null || it.socialList.isEmpty()) throw Throwable(NO_SOCIAL_CONTACT_LOADED)
-            }
+            initContactSection()
+        }
+    }
+
+    @AddTrace(name = "Contact section init")
+    private suspend fun initContactSection() {
+        contactService.getContactSection().also {
+            contactSection.value = it ?: ContactSection()
+            isLoading.value = false
+            if (it == null || it.socialList.isEmpty()) throw Throwable(NO_SOCIAL_CONTACT_LOADED)
         }
     }
 

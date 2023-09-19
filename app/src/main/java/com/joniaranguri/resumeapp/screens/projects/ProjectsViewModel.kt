@@ -1,9 +1,12 @@
 package com.joniaranguri.resumeapp.screens.projects
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.perf.metrics.AddTrace
+import com.joniaranguri.resumeapp.model.LanguagesSection
 import com.joniaranguri.resumeapp.model.ProjectsSection
 import com.joniaranguri.resumeapp.model.service.ProjectsService
 import com.joniaranguri.resumeapp.screens.base.BaseViewModel
+import com.joniaranguri.resumeapp.screens.experience.ExperienceViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,11 +18,16 @@ class ProjectsViewModel @Inject constructor(
 
     init {
         launchCatching {
-            projectsService.getProjectsSection().also {
-                projectsSection.value = it ?: ProjectsSection()
-                isLoading.value = false
-                if (it == null || it.projectsList.isEmpty()) throw Throwable(NO_PROJECTS_LOADED)
-            }
+            initProjectsSection()
+        }
+    }
+
+    @AddTrace(name = "Projects section init")
+    private suspend fun initProjectsSection() {
+        projectsService.getProjectsSection().also {
+            projectsSection.value = it ?: ProjectsSection()
+            isLoading.value = false
+            if (it == null || it.projectsList.isEmpty()) throw Throwable(NO_PROJECTS_LOADED)
         }
     }
 

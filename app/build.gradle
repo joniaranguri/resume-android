@@ -4,8 +4,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id 'com.google.gms.google-services'
-    id 'com.google.firebase.firebase-perf'
     id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -80,6 +80,9 @@ dependencies {
     // Crashlytics
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Performance Monitoring
+    implementation 'com.google.firebase:firebase-perf-ktx'
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.3.0")
