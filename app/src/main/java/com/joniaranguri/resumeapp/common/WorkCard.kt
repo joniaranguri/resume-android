@@ -1,5 +1,6 @@
 package com.joniaranguri.resumeapp.common
 
+import android.os.Bundle
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -15,10 +16,14 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.joniaranguri.resumeapp.R
+import com.joniaranguri.resumeapp.ResumeApplication
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.graphs.ScreenRoute
 import com.joniaranguri.resumeapp.model.Work
+import com.joniaranguri.resumeapp.screens.experience.ExperienceViewModel.Companion.ANALYTICS_EVENT_WORK_DETAIL
+import com.joniaranguri.resumeapp.screens.work_detail.WorkDetailViewModel
 import com.joniaranguri.resumeapp.ui.theme.*
 
 
@@ -28,7 +33,15 @@ fun WorkCard(work: Work, openScreen: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { openScreen("${ScreenRoute.WorkDetail.route}/${work.workId}") },
+            .clickable {
+                FirebaseAnalytics
+                    .getInstance(ResumeApplication.instance)
+                    .logEvent(ANALYTICS_EVENT_WORK_DETAIL, Bundle().apply {
+                        putString("company", work.companyName)
+                        putString("title", work.title)
+                    })
+                openScreen("${ScreenRoute.WorkDetail.route}/${work.workId}")
+            },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onTertiary,
         ),

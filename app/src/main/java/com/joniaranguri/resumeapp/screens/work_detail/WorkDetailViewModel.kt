@@ -1,14 +1,18 @@
 package com.joniaranguri.resumeapp.screens.work_detail
 
+import android.os.Bundle
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.crashlytics.ktx.setCustomKeys
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.perf.metrics.AddTrace
+import com.joniaranguri.resumeapp.ResumeApplication
 import com.joniaranguri.resumeapp.model.LanguagesSection
 import com.joniaranguri.resumeapp.model.WorkDetailSection
 import com.joniaranguri.resumeapp.model.service.WorkDetailService
 import com.joniaranguri.resumeapp.screens.base.BaseViewModel
+import com.joniaranguri.resumeapp.screens.contact.ContactViewModel
 import com.joniaranguri.resumeapp.screens.experience.ExperienceViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -48,6 +52,7 @@ class WorkDetailViewModel @Inject constructor(
                 throw Throwable(NO_WORK_DESCRIPTION_LOADED)
             }
         }
+
     }
 
     fun processEvent(event: () -> Unit) {

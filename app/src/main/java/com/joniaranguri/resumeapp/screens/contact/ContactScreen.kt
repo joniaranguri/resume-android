@@ -3,12 +3,27 @@ package com.joniaranguri.resumeapp.screens.contact
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,13 +38,16 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.joniaranguri.resumeapp.R
+import com.joniaranguri.resumeapp.ResumeApplication
 import com.joniaranguri.resumeapp.common.HtmlCustomText
 import com.joniaranguri.resumeapp.common.ShimmerCircle
 import com.joniaranguri.resumeapp.common.ShimmerText
 import com.joniaranguri.resumeapp.common.ext.defaultPadding
 import com.joniaranguri.resumeapp.model.ContactSection
 import com.joniaranguri.resumeapp.model.Social
+import com.joniaranguri.resumeapp.screens.contact.ContactViewModel.Companion.ANALYTICS_EVENT_SOCIAL_ITEM
 import com.joniaranguri.resumeapp.ui.theme.accentColor
 import com.joniaranguri.resumeapp.ui.theme.contactColor
 import com.joniaranguri.resumeapp.ui.theme.md_theme_dark_background
@@ -153,7 +171,14 @@ fun SocialContent(socialList: List<Social>) {
                 .height(50.dp)
                 .width(50.dp)
                 .padding(vertical = 5.dp)
-                .clickable { uriHandler.openUri(it.targetUrl) }
+                .clickable {
+                    FirebaseAnalytics
+                        .getInstance(ResumeApplication.instance)
+                        .logEvent(ANALYTICS_EVENT_SOCIAL_ITEM, Bundle().apply {
+                            putString("name", it.name)
+                        })
+                    uriHandler.openUri(it.targetUrl)
+                }
         )
     }
 }
