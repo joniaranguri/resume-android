@@ -1,6 +1,7 @@
 package com.joniaranguri.resumeapp.screens.experience
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.perf.metrics.AddTrace
 import com.joniaranguri.resumeapp.model.EducationSection
 import com.joniaranguri.resumeapp.model.LanguagesSection
 import com.joniaranguri.resumeapp.model.WorkSection
@@ -19,23 +20,39 @@ class ExperienceViewModel @Inject constructor(
 
     init {
         launchCatching {
-            experienceService.getWorkSection().also {
-                workSection.value = it ?: WorkSection()
-                isLoading.value = false
-                if (it == null || it.workList.isEmpty()) throw Throwable(NO_WORKS_LOADED)
-            }
+            initWorkSection()
         }
         launchCatching {
-            experienceService.getEducationSection().also {
-                educationSection.value = it ?: EducationSection()
-                if (it == null || it.educationList.isEmpty()) throw Throwable(NO_EDUCATION_LOADED)
-            }
+            initEducationSection()
         }
         launchCatching {
-            experienceService.getLanguagesSection().also {
-                languagesSection.value = it ?: LanguagesSection()
-                if (it == null || it.languagesList.isEmpty()) throw Throwable(NO_LANGUAGES_LOADED)
-            }
+            initLanguagesSection()
+        }
+    }
+
+    @AddTrace(name = "Work section init")
+    private suspend fun initWorkSection() {
+        experienceService.getWorkSection().also {
+            workSection.value = it ?: WorkSection()
+            isLoading.value = false
+            if (it == null || it.workList.isEmpty()) throw Throwable(NO_WORKS_LOADED)
+        }
+    }
+
+    @AddTrace(name = "Education section init")
+
+    private suspend fun initEducationSection() {
+        experienceService.getEducationSection().also {
+            educationSection.value = it ?: EducationSection()
+            if (it == null || it.educationList.isEmpty()) throw Throwable(NO_EDUCATION_LOADED)
+        }
+    }
+
+    @AddTrace(name = "Languages section init")
+    private suspend fun initLanguagesSection() {
+        experienceService.getLanguagesSection().also {
+            languagesSection.value = it ?: LanguagesSection()
+            if (it == null || it.languagesList.isEmpty()) throw Throwable(NO_LANGUAGES_LOADED)
         }
     }
 

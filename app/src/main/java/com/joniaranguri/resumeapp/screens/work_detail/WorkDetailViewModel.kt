@@ -4,9 +4,12 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.crashlytics.ktx.setCustomKeys
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.perf.metrics.AddTrace
+import com.joniaranguri.resumeapp.model.LanguagesSection
 import com.joniaranguri.resumeapp.model.WorkDetailSection
 import com.joniaranguri.resumeapp.model.service.WorkDetailService
 import com.joniaranguri.resumeapp.screens.base.BaseViewModel
+import com.joniaranguri.resumeapp.screens.experience.ExperienceViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -22,22 +25,27 @@ class WorkDetailViewModel @Inject constructor(
 
     fun initialize(workId: String) {
         launchCatching {
-            workDetailService.getWorkDetailSection(workId).also {
-                workDetailSection.value = it ?: WorkDetailSection()
-                isLoading.value = false
-                if (it == null || it.description.isEmpty()) {
-                    Firebase.crashlytics.setCustomKeys {
-                        key("Workd id", workId)
-                    }
-                    it?.let {
-                        Firebase.crashlytics.setCustomKeys {
-                            key("Company name", it.companyName)
-                            key("Work title", it.title)
-                            key("Work period", it.period)
-                        }
-                    }
-                    throw Throwable(NO_WORK_DESCRIPTION_LOADED)
+            initWorkDetail(workId)
+        }
+    }
+
+    @AddTrace(name = "Work detail init")
+    private suspend fun initWorkDetail(workId: String) {
+        workDetailService.getWorkDetailSection(workId).also {
+            workDetailSection.value = it ?: WorkDetailSection()
+            isLoading.value = false
+            if (it == null || it.description.isEmpty()) {
+                Firebase.crashlytics.setCustomKeys {
+                    key("Workd id", workId)
                 }
+                it?.let {
+                    Firebase.crashlytics.setCustomKeys {
+                        key("Company name", it.companyName)
+                        key("Work title", it.title)
+                        key("Work period", it.period)
+                    }
+                }
+                throw Throwable(NO_WORK_DESCRIPTION_LOADED)
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.joniaranguri.resumeapp.screens.about
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.perf.metrics.AddTrace
 import com.joniaranguri.resumeapp.model.HobbiesSection
 import com.joniaranguri.resumeapp.model.ProfileSection
 import com.joniaranguri.resumeapp.model.ValuesSection
@@ -19,24 +20,39 @@ class AboutViewModel @Inject constructor(
 
     init {
         launchCatching {
-            aboutService.getProfileSection().also {
-                profileSection.value = it ?: ProfileSection()
-                isLoading.value = false
-                if (it == null || it.presentation.isEmpty()) throw Throwable(NO_PRESENTATION_LOADED)
-            }
+            initProfileSection()
         }
         launchCatching {
-            aboutService.getValuesSection().also {
-                valuesSection.value = it ?: ValuesSection()
-                if (it == null || it.valuesList.isEmpty()) throw Throwable(NO_VALUES_LOADED)
-            }
+            initValuesSection()
         }
         launchCatching {
-            hobbiesSection.value = aboutService.getHobbiesSection() ?: HobbiesSection()
-            aboutService.getHobbiesSection().also {
-                hobbiesSection.value = it ?: HobbiesSection()
-                if (it == null || it.hobbiesList.isEmpty()) throw Throwable(NO_HOBBIES_LOADED)
-            }
+            initHobbiesSection()
+        }
+    }
+
+    @AddTrace(name = "Profile section init")
+    private suspend fun initProfileSection() {
+        aboutService.getProfileSection().also {
+            profileSection.value = it ?: ProfileSection()
+            isLoading.value = false
+            if (it == null || it.presentation.isEmpty()) throw Throwable(NO_PRESENTATION_LOADED)
+        }
+    }
+
+    @AddTrace(name = "Values section init")
+    private suspend fun initValuesSection() {
+        aboutService.getValuesSection().also {
+            valuesSection.value = it ?: ValuesSection()
+            if (it == null || it.valuesList.isEmpty()) throw Throwable(NO_VALUES_LOADED)
+        }
+    }
+
+    @AddTrace(name = "Hobbies section init")
+    private suspend fun initHobbiesSection() {
+        hobbiesSection.value = aboutService.getHobbiesSection() ?: HobbiesSection()
+        aboutService.getHobbiesSection().also {
+            hobbiesSection.value = it ?: HobbiesSection()
+            if (it == null || it.hobbiesList.isEmpty()) throw Throwable(NO_HOBBIES_LOADED)
         }
     }
 
