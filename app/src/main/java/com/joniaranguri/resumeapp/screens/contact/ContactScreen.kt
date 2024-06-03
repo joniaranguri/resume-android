@@ -208,13 +208,9 @@ fun MessageSection(
                 .fillMaxWidth()
                 .defaultPadding(),
             onClick = {
-                if (sendMessage()) sendWhatsappMessage(
-                    context,
-                    contactSection.phoneNumber,
-                    contactSection.message
-                )
+                if (sendMessage()) sendToCalendly(context)
             }) {
-            Text(text = "Send message")
+            Text(text = "Schedule a meeting")
 
         }
     }
@@ -231,6 +227,15 @@ fun sendWhatsappMessage(context: Context, phoneNumber: String, message: String) 
                     message
                 )
             )
+        )
+    )
+}
+
+fun sendToCalendly(context: Context) {
+    context.startActivity(
+        Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("https://calendly.com/joniaranguri/let-s-talk")
         )
     )
 }
