@@ -19,9 +19,20 @@ android {
         versionCode 100001
         versionName "1.0.1"
 
+        archivesBaseName = "v$versionName ($versionCode)"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
+        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'JoniAranguri\'sResume'
+            keyPassword 'TODO'
+            storeFile file('/Users/joniaranguri/PersonalProjects/resume-android/keys/keystore-resume-android')
+            storePassword 'TODO'
         }
     }
 
@@ -29,6 +40,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
