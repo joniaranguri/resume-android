@@ -2,7 +2,7 @@ package com.joniaranguri.resumeapp.model
 
 data class ProjectsSection(
     val description: String = "",
-    val projectsList: List<Project> = emptyList()
+    var projectsList: List<Project> = emptyList()
 )
 
 data class Project(
@@ -11,5 +11,6 @@ data class Project(
     val description: String = "",
     val status: String = "",
     val logo: String = "",
-    val url: String = ""
+    val url: String = "",
+    val order: Int = 0
 )

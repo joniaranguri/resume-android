@@ -4,6 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.perf.metrics.AddTrace
 import com.joniaranguri.resumeapp.model.EducationSection
 import com.joniaranguri.resumeapp.model.LanguagesSection
+import com.joniaranguri.resumeapp.model.Project
+import com.joniaranguri.resumeapp.model.Work
 import com.joniaranguri.resumeapp.model.WorkSection
 import com.joniaranguri.resumeapp.model.service.ExperienceService
 import com.joniaranguri.resumeapp.screens.base.BaseViewModel
@@ -33,6 +35,7 @@ class ExperienceViewModel @Inject constructor(
     @AddTrace(name = "Work section init")
     private suspend fun initWorkSection() {
         experienceService.getWorkSection().also {
+            it?.workList = it?.workList?.sortedBy { work: Work -> work.order } ?: emptyList()
             workSection.value = it ?: WorkSection()
             isLoading.value = false
             if (it == null || it.workList.isEmpty()) throw Throwable(NO_WORKS_LOADED)
