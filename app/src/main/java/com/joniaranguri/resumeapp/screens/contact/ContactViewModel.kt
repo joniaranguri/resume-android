@@ -1,7 +1,10 @@
 package com.joniaranguri.resumeapp.screens.contact
 
+import android.os.Bundle
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.perf.metrics.AddTrace
+import com.joniaranguri.resumeapp.ResumeApplication
 import com.joniaranguri.resumeapp.model.ContactSection
 import com.joniaranguri.resumeapp.model.Message
 import com.joniaranguri.resumeapp.model.service.ContactService
@@ -36,6 +39,10 @@ class ContactViewModel @Inject constructor(
         launchCatching {
             contactService.saveMessage(Message(message))
         }
+        FirebaseAnalytics.getInstance(ResumeApplication.instance)
+            .logEvent(ANALYTICS_EVENT_SEND_MESSAGE, Bundle().apply {
+                putString("message", message)
+            })
         return true
     }
 
@@ -45,5 +52,7 @@ class ContactViewModel @Inject constructor(
 
     companion object {
         const val NO_SOCIAL_CONTACT_LOADED = "There was an error and no social contact was loaded"
+        const val ANALYTICS_EVENT_SEND_MESSAGE = "SEND_MESSAGE"
+        const val ANALYTICS_EVENT_SOCIAL_ITEM = "SOCIAL_ITEM"
     }
 }

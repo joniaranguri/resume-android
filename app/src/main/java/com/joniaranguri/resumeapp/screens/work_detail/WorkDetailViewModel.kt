@@ -5,11 +5,9 @@ import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.crashlytics.ktx.setCustomKeys
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.perf.metrics.AddTrace
-import com.joniaranguri.resumeapp.model.LanguagesSection
 import com.joniaranguri.resumeapp.model.WorkDetailSection
 import com.joniaranguri.resumeapp.model.service.WorkDetailService
 import com.joniaranguri.resumeapp.screens.base.BaseViewModel
-import com.joniaranguri.resumeapp.screens.experience.ExperienceViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

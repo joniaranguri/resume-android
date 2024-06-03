@@ -33,5 +33,6 @@ class ProjectsViewModel @Inject constructor(
 
     companion object {
         const val NO_PROJECTS_LOADED = "There was an error and no one personal project was loaded"
+        const val ANALYTICS_EVENT_PROJECT = "PROJECT_DETAIL"
     }
 }
